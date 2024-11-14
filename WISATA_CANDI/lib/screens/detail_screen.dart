@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:wisata_candi/models/candi.dart';
-
-class DetailScreen extends StatelessWidget {
+import '../models/candi.dart';
+  
+class DetailScreen extends StatelessWidget{
   final Candi candi;
 
-  const DetailScreen({super.key, required this.candi});
-
+  const DetailScreen ({super.key, required this.candi});
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,38 +14,29 @@ class DetailScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
+              //Deatil Header
               Stack(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal : 8),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: Image.asset(
                         candi.imageAsset,
                         width: double.infinity,
-                        height: 300,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.cover, // Added fit property to ensure the image covers the container
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.deepPurple[100]?.withOpacity(0.8),
-                        shape: BoxShape.circle,
-                      ),
-                      child: IconButton(
-                          onPressed: () {}, icon: const Icon(Icons.arrow_back)),
                     ),
                   ),
                 ],
               ),
+              // Info
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    //Info Atas
                     const SizedBox(
                       height: 16,
                     ),
@@ -55,48 +46,30 @@ class DetailScreen extends StatelessWidget {
                         Text(
                           candi.name,
                           style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                            fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                         IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.favorite_border))
+                          onPressed: (){}, 
+                          icon: const Icon(Icons.favorite_border))
                       ],
                     ),
+                    //Info Tengah
                     const SizedBox(
                       height: 16,
                     ),
                     Row(
                       children: [
                         const Icon(
-                          Icons.place,
-                          color: Colors.red,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        const SizedBox(
-                          width: 70,
-                          child: Text(
-                            'Lokasi',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Text(': ${candi.location}')
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.calendar_month,
+                          Icons.calendar_month, 
                           color: Colors.blue,
                         ),
                         const SizedBox(
-                          width: 8,
+                          width: 0,
                         ),
                         const SizedBox(
                           width: 70,
                           child: Text(
-                            'Dibangun',
+                            'Di bangun',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -106,11 +79,11 @@ class DetailScreen extends StatelessWidget {
                     Row(
                       children: [
                         const Icon(
-                          Icons.house,
+                          Icons.house, 
                           color: Colors.green,
                         ),
                         const SizedBox(
-                          width: 8,
+                          width: 0,
                         ),
                         const SizedBox(
                           width: 70,
@@ -122,6 +95,26 @@ class DetailScreen extends StatelessWidget {
                         Text(': ${candi.type}')
                       ],
                     ),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.place, 
+                          color: Colors.red,
+                        ),
+                        const SizedBox(
+                          width: 0,
+                        ),
+                        const SizedBox(
+                          width: 70,
+                          child: Text(
+                            'Lokasi',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Text(': ${candi.location}')
+                      ],
+                    ),
+                    //pemisah
                     const SizedBox(
                       height: 16,
                     ),
@@ -131,20 +124,22 @@ class DetailScreen extends StatelessWidget {
                     const SizedBox(
                       height: 16,
                     ),
+                    //Info Bawah
                     const Text(
                       'Deskripsi',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold
+                      ),
                     ),
-                    const SizedBox(
-                      height: 16,
-                    ),
+                    const SizedBox(height: 16),
                     Text(
                       candi.description,
-                    )
+                    ),
                   ],
                 ),
               ),
+              //Gallery
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: Column(
@@ -156,11 +151,8 @@ class DetailScreen extends StatelessWidget {
                     Divider(
                       color: Colors.deepPurple.shade100,
                     ),
-                    const SizedBox(
-                      height: 16,
-                    ),
                     const Text(
-                      'Galeri',
+                      'Gallery',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -178,16 +170,19 @@ class DetailScreen extends StatelessWidget {
                           return Padding(
                             padding: const EdgeInsets.only(right: 8),
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                // Handle tap event
+                              },
                               child: Container(
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    border: Border.all(
-                                      color: Colors.deepPurple.shade100,
-                                      width: 2,
-                                    )),
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: Colors.deepPurple[100]!,
+                                    width: 2,
+                                  ),
+                                ),
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(12),
                                   child: CachedNetworkImage(
                                     imageUrl: candi.imageUrls[index],
                                     height: 120,
@@ -198,8 +193,7 @@ class DetailScreen extends StatelessWidget {
                                       height: 120,
                                       color: Colors.deepPurple[50],
                                     ),
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(Icons.error),
+                                    errorWidget: (context, url, error) => const Icon(Icons.error),
                                   ),
                                 ),
                               ),
@@ -213,11 +207,14 @@ class DetailScreen extends StatelessWidget {
                     ),
                     const Text(
                       'Tap untuk memperbesar',
-                      style: TextStyle(fontSize: 12, color: Colors.black54),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.black54,
+                      ),
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
